@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 void main() {
   String city = "İstanbul";
   String country = "Türkiye";
