@@ -70,4 +70,6 @@ class Homework2 {
   } // Verilen kelime içinde kaç adet a harfi olduğunu bulan method.
 
 
+
+
 }
