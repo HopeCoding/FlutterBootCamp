@@ -1,9 +1,9 @@
 class Homework2 {
 
   double interior_angle(int edges) {
-    double total = ((edges - 2) * 180) / edges;
+    double edge = ((edges - 2) * 180) / edges;
 
-    return total;
+    return edge;
   } //Kenar sayısı verilen çokgenin iç açıları bulan method.
 
   int myWage(int day) {
@@ -68,6 +68,7 @@ class Homework2 {
     }
     print("$text kelimesinde $control adet a harfi vardır.");
   } // Verilen kelime içinde kaç adet a harfi olduğunu bulan method.
+
 
 
 

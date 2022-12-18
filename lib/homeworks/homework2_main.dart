@@ -1,11 +1,9 @@
-import 'package:dart_lessons/object_oriented/homework2.dart';
-
-
+import 'homework2.dart';
 void main(){
 
     // 1.Question
     var sumofAngles=Homework2();
-    print("İç açılar toplamı: ${sumofAngles.interior_angle(5)}");
+    print("İç açılar toplamı: ${sumofAngles.interior_angle(7)}");
 
     //2.Question
     var wageTotal=Homework2();
@@ -34,6 +32,8 @@ void main(){
      //4.Question
      var letterA=Homework2();
      letterA.findA("Araba");
+
+
 
 
 }
