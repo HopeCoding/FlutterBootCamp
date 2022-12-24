@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class DropdownBtn extends StatefulWidget {
-  List<String> list = <String>[];
+const   List<String> list = <String>["34","36","38"];
 
-  DropdownBtn({required this.list});
+class DropdownBtn extends StatefulWidget {
+
+
 
   @override
   State<DropdownBtn> createState() => _DropdownBtnState();
@@ -11,39 +12,28 @@ class DropdownBtn extends StatefulWidget {
 
 class _DropdownBtnState extends State<DropdownBtn> {
 
-
-
-
-
   @override
   Widget build(BuildContext context) {
+    String dropdownValue = list.first;
 
-    String dropdownValue = widget.list.first;
-    for(int i=0;i<widget.list.length;i++){
-      print("Liste elemanları:${widget.list.elementAt(i)} ");
-
-    }
     return DropdownButton<String>(
       value: dropdownValue,
       icon: const Icon(Icons.add_box_outlined),
-      elevation: 16,
       style: const TextStyle(color: Colors.indigoAccent),
       underline: Container(
         height: 2,
         color: Colors.deepPurpleAccent,
       ),
-      onChanged: (String? value) {
-        // This is called when the user selects an item.
+      onChanged: (veri){
         setState(() {
-          dropdownValue = value!;
+          dropdownValue = veri!;
         });
       },
-      items: widget.list.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
+      items: list.map((value) {
+        return DropdownMenuItem(child: Text(value),value: value,);
       }).toList(),
+        // This is called when the user selects an item.
+
     );
   }
 }

@@ -12,6 +12,10 @@ class Homework3 extends StatefulWidget {
 }
 
 class _Homework3State extends State<Homework3> {
+  var shoesList = ["34", "36", "38", "40", "42", "44"];
+
+  var colorList = ["Siyah", "Mavi", "Beyaz", "Kırmızı"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,12 +93,18 @@ class _Homework3State extends State<Homework3> {
                     padding: const EdgeInsets.only(left: 0),
                     child: Row(
                       children: [
-                        TxtChip(txt: "Ayakkabı Numarası Seçiniz:", size: 12, color: Colors.blueGrey, font: FontWeight.normal),
-                        DropdownBtn(list: ["34","36","38","40","42","44"]),
-                        TxtChip(txt: "Renkler", size: 12, color: Colors.blueGrey, font: FontWeight.normal),
-                        DropdownBtn(list: ["Siyah","Mavi","Beyaz","Kırmızı"]),
-
-
+                        TxtChip(
+                            txt: "Ayakkabı Numarası Seçiniz:",
+                            size: 12,
+                            color: Colors.blueGrey,
+                            font: FontWeight.normal),
+                        DropdownBtn(),
+                        TxtChip(
+                            txt: "Renkler",
+                            size: 12,
+                            color: Colors.blueGrey,
+                            font: FontWeight.normal),
+                        DropdownBtn(),
                       ],
                     ),
                   ),

@@ -57,9 +57,10 @@ flutter:
     - family: Griffon
       fonts:
         - asset: fonts/Griffon-Regular.otf
+          style: italic
   assets:
-   - images/pizza_resim.png
-   - images/shoes.png
+   - images/
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
