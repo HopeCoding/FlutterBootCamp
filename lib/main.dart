@@ -5,6 +5,8 @@ import 'package:dart_lessons/homeworks/h3/homework3.dart';
 import 'package:dart_lessons/homeworks/h4/homework4.dart';
 import 'package:dart_lessons/homeworks/h5/calculator.dart';
 import 'package:dart_lessons/kisiler_uygulamasi/ui/screen/mainpagePerson.dart';
+import 'package:dart_lessons/page_tabs/bottom_page.dart';
+import 'package:dart_lessons/page_tabs/drawer_page.dart';
 import 'package:dart_lessons/page_tabs/tabs_sayfa.dart';
 import 'package:dart_lessons/widgets/mainpageWidget.dart';
 import 'package:dart_lessons/work_structure/mainpagegame.dart';
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: const TabsSayfa()
+      home: const DrawerPage()
     );
   }
 }
