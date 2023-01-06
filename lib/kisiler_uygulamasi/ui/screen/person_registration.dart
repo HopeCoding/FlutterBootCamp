@@ -1,4 +1,6 @@
+import 'package:dart_lessons/kisiler_uygulamasi/ui/cubit/person_regist_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PersonRegistPage extends StatefulWidget {
   const PersonRegistPage({Key? key}) : super(key: key);
@@ -14,9 +16,7 @@ class _PersonRegistPageState extends State<PersonRegistPage> {
     var tfpName = TextEditingController();
     var tfpPhone = TextEditingController();
 
-    Future<void> save(String name,String phone) async {
-      print("Kişi Kaydet : $name - $phone");
-    }
+
 
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +31,7 @@ class _PersonRegistPageState extends State<PersonRegistPage> {
                 TextField(controller: tfpName,decoration: const InputDecoration(hintText: "Kişi Ad"),),
                 TextField(controller: tfpPhone,decoration: const InputDecoration(hintText: "Kişi Tel"),),
                 ElevatedButton(onPressed: (){
-                    save(tfpPhone.text, tfpPhone.text);
+                    context.read<PersonRegistCubit>().save(tfpName.text, tfpPhone.text);
               }, child: const Text("Kaydet")),
 
             ],

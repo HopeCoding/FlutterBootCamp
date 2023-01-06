@@ -1,5 +1,7 @@
 import 'package:dart_lessons/kisiler_uygulamasi/data/entity/persons.dart';
+import 'package:dart_lessons/kisiler_uygulamasi/ui/cubit/person_detail_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PersonDetailPage extends StatefulWidget {
 
@@ -25,9 +27,6 @@ class _PersonDetailPageState extends State<PersonDetailPage> {
     tfPersonPhone.text = person.phone;
   }
 
-  Future<void> update(int p_id,String p_name,String p_tel)async{
-
-  }
 
 
 
@@ -46,7 +45,7 @@ class _PersonDetailPageState extends State<PersonDetailPage> {
               TextField(controller: tfPersonName,decoration: const InputDecoration(hintText: "Kişi Ad"),),
               TextField(controller: tfPersonPhone,decoration: const InputDecoration(hintText: "Kişi Tel"),),
               ElevatedButton(onPressed: (){
-                update(widget.person.id,tfPersonName.text,tfPersonPhone.text);
+                context.read<PersonDetailCubit>().update(widget.person.id,tfPersonName.text,tfPersonPhone.text);
               }, child: const Text("Güncelle")),
 
             ],

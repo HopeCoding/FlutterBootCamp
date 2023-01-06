@@ -1,7 +1,10 @@
+import 'package:dart_lessons/block_pattern/main_cubit.dart';
+import 'package:dart_lessons/kisiler_uygulamasi/ui/cubit/mainpage_cubit.dart';
 import 'package:dart_lessons/kisiler_uygulamasi/ui/screen/person_detail.dart';
 import 'package:dart_lessons/kisiler_uygulamasi/ui/screen/person_registration.dart';
 import 'package:flutter/material.dart';
 import 'package:dart_lessons/kisiler_uygulamasi/data/entity/persons.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainpagePerson extends StatefulWidget {
   const MainpagePerson({Key? key}) : super(key: key);
@@ -13,16 +16,10 @@ class MainpagePerson extends StatefulWidget {
 class _MainpagePersonState extends State<MainpagePerson> {
   bool searchInActive = false;
 
-  Future<List<Persons>> showAllPeople() async {
-    var personList = <Persons>[];
-    var p1 = Persons(id: 1, name: "Durmus", phone: "3131");
-    var p2 = Persons(id: 2, name: "Ece", phone: "2222");
-    var p3 = Persons(id: 3, name: "Elif", phone: "4135");
-    personList.add(p1);
-    personList.add(p2);
-    personList.add(p3);
-
-    return personList;
+  @override
+  void initState() {
+    super.initState();
+    context.read<MainPagePersonCubit>().kisileriYukle();
   }
 
   @override
@@ -33,7 +30,9 @@ class _MainpagePersonState extends State<MainpagePerson> {
             ? TextField(
                 decoration:
                     const InputDecoration(hintText: "Aramak için yazınız"),
-                onChanged: (searchData) {},
+                onChanged: (searchData) {
+                  context.read<MainPagePersonCubit>().ara(searchData);
+                },
               )
             : const Text("Kişiler"),
         actions: [
@@ -42,6 +41,7 @@ class _MainpagePersonState extends State<MainpagePerson> {
                   onPressed: () {
                     setState(() {
                       searchInActive = false;
+                      context.read<MainPagePersonCubit>().kisileriYukle();
                     });
                   },
                   icon: const Icon(Icons.clear))
@@ -54,18 +54,21 @@ class _MainpagePersonState extends State<MainpagePerson> {
                   icon: const Icon(Icons.search)),
         ],
       ),
-      body: FutureBuilder<List<Persons>>(
-        future: showAllPeople(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            var personList = snapshot.data;
+      body: BlocBuilder<MainPagePersonCubit, List<Persons>>(
+        builder: (context, personList) {
+          if (personList.isNotEmpty) {
             return ListView.builder(
-              itemCount: personList!.length,
+              itemCount: personList.length,
               itemBuilder: (context, index) {
                 var person = personList[index];
                 return GestureDetector(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => PersonDetailPage(person: person)));
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PersonDetailPage(
+                                person: person))).then((value)
+                        { context.read<MainPagePersonCubit>().kisileriYukle(); });
                   },
                   child: Card(
                     child: Row(
@@ -79,16 +82,22 @@ class _MainpagePersonState extends State<MainpagePerson> {
                             onPressed: () {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                    content: Text("${person.name} silinsin mi ?"),
-                                    action: SnackBarAction(
-                                      label: "Evet",
-                                      onPressed: (){
-                                        print("Kişi sil : ${person.id}");
-                                      },
-                                    ),
+                                  content: Text("${person.name} silinsin mi ?"),
+                                  action: SnackBarAction(
+                                    label: "Evet",
+                                    onPressed: () {
+                                      context
+                                          .read<MainPagePersonCubit>()
+                                          .sil(person.id);
+                                    },
+                                  ),
                                 ),
                               );
-                            }, icon: Icon(Icons.delete_outline,color: Colors.black54,)),
+                            },
+                            icon: Icon(
+                              Icons.delete_outline,
+                              color: Colors.black54,
+                            )),
                       ],
                     ),
                   ),
@@ -101,7 +110,13 @@ class _MainpagePersonState extends State<MainpagePerson> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => PersonRegistPage())).then((value)
+          { context.read<MainPagePersonCubit>().kisileriYukle(); });
+        },
         child: const Icon(Icons.add_sharp),
       ),
     );
