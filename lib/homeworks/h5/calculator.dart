@@ -111,7 +111,7 @@ class _CalculatorState extends State<Calculator> {
                 blurRadius: 4,
                 spreadRadius: 0.5,
                 offset: Offset(-3, -3),
-              )
+              ),
             ]),
         child: Center(
           child: Text(
