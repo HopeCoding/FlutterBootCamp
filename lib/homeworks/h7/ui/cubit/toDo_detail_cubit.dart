@@ -1,4 +1,4 @@
-import 'package:dart_lessons/homeworks/h6/data/repo/yapilacakdao_repo.dart';
+import 'package:dart_lessons/homeworks/h7/data/repo/yapilacakdao_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class toDoDetailCubit extends Cubit<void>{

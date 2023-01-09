@@ -1,4 +1,4 @@
-import 'package:dart_lessons/homeworks/h6/ui/cubit/toDo_regist_cubit.dart';
+import 'package:dart_lessons/homeworks/h7/ui/cubit/toDo_regist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

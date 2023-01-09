@@ -1,5 +1,5 @@
-import 'package:dart_lessons/homeworks/h6/data/entity/yapilacaklar.dart';
-import 'package:dart_lessons/homeworks/h6/data/sqlite/db_toDo.dart';
+import 'package:dart_lessons/homeworks/h7/data/entity/yapilacaklar.dart';
+import 'package:dart_lessons/homeworks/h7/data/sqlite/db_toDo.dart';
 
 class toDosRepo {
   Future<void> save(String name) async {

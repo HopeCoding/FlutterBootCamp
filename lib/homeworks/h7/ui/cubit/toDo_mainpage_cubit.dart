@@ -1,4 +1,4 @@
-import 'package:dart_lessons/homeworks/h6/data/entity/yapilacaklar.dart';
+import 'package:dart_lessons/homeworks/h7/data/entity/yapilacaklar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/repo/yapilacakdao_repo.dart';
